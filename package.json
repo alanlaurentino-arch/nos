@@ -27,6 +27,11 @@
   },
   "private": true,
   "cds": {
+    "server": {
+      "bodyParser": {
+        "limit": "5mb"
+      }
+    },
     "requires": {
       "[production]": {
         "db": "hana",

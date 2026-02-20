@@ -1,2 +1,2 @@
 
-using from './natura_nos.productmonitor/annotations';
+using from './stock_nos.productmonitor/annotations';

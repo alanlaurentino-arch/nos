@@ -1,7 +1,7 @@
 {
   "_version": "1.60.0",
   "sap.app": {
-    "id": "naturanos.productmonitor",
+    "id": "stocknos.productmonitor",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -17,7 +17,7 @@
     },
     "dataSources": {
       "mainService": {
-        "uri": "/service/Natura_NOSService/",
+        "uri": "/service/Stock_NOSService/",
         "type": "OData",
         "settings": {
           "annotations": [],
@@ -27,10 +27,10 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "naturanosproductmonitor-display": {
-          "semanticObject": "naturanosproductmonitor",
+        "stocknosproductmonitor-display": {
+          "semanticObject": "stocknosproductmonitor",
           "action": "display",
-          "title": "{{naturanosproductmonitor-display.flpTitle}}",
+          "title": "{{stocknosproductmonitor-display.flpTitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
@@ -73,7 +73,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "naturanos.productmonitor.i18n.i18n"
+          "bundleName": "stocknos.productmonitor.i18n.i18n"
         }
       },
       "": {

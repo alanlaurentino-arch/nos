@@ -4,8 +4,8 @@
     "generatorPlatform": "SAP Business Application Studio",
     "serviceType": "Local CAP",
     "metadataFilename": "",
-    "serviceUrl": "http://localhost:4004/service/Natura_NOSService/",
-    "appName": "natura_nos.productmonitor",
+    "serviceUrl": "http://localhost:4004/service/Stock_NOSService/",
+    "appName": "stock_nos.productmonitor",
     "appTitle": "productMonitor",
     "appDescription": "My SAP application",
     "appNamespace": "",
@@ -21,6 +21,6 @@
         "value": "Product"
       }
     ],
-    "launchText": "To launch the generated app, start your CAP project:  and navigate to the following location in your browser:\n\nhttp://localhost:4004/natura_nos.productmonitor/webapp/index.html"
+    "launchText": "To launch the generated app, start your CAP project:  and navigate to the following location in your browser:\n\nhttp://localhost:4004/stock_nos.productmonitor/webapp/index.html"
   }
 }

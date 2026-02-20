@@ -1,12 +1,12 @@
 sap.ui.define([
     "sap/fe/test/JourneyRunner",
-	"naturanos/productmonitor/test/integration/pages/ProductList",
-	"naturanos/productmonitor/test/integration/pages/ProductObjectPage"
+	"stocknos/productmonitor/test/integration/pages/ProductList",
+	"stocknos/productmonitor/test/integration/pages/ProductObjectPage"
 ], function (JourneyRunner, ProductList, ProductObjectPage) {
     'use strict';
 
     var runner = new JourneyRunner({
-        launchUrl: sap.ui.require.toUrl('naturanos/productmonitor') + '/test/flpSandbox.html#naturanosproductmonitor-tile',
+        launchUrl: sap.ui.require.toUrl('stocknos/productmonitor') + '/test/flpSandbox.html#stocknosproductmonitor-tile',
         pages: {
 			onTheProductList: ProductList,
 			onTheProductObjectPage: ProductObjectPage

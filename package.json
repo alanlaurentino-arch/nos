@@ -1,5 +1,5 @@
 {
-  "name": "Natura_NOS",
+  "name": "Stock_NOS",
   "version": "1.0.0",
   "description": "A simple CAP project.",
   "dependencies": {
@@ -23,7 +23,7 @@
     "start-local": "npm run generate-entry-point && npm run cds-watch",
     "generate-entry-point": "dev-cap-tools gen-entrypoint",
     "cds-watch": "cds watch --open",
-    "watch-natura_nos.productmonitor": "cds watch --open natura_nos.productmonitor/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-stock_nos.productmonitor": "cds watch --open stock_nos.productmonitor/webapp/index.html?sap-ui-xx-viewCache=false"
   },
   "private": true,
   "cds": {
@@ -44,6 +44,6 @@
   },
   "lcap": true,
   "sapux": [
-    "app/natura_nos.productmonitor"
+    "app/stock_nos.productmonitor"
   ]
 }

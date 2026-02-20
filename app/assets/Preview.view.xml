@@ -16,7 +16,7 @@
     <l:BlockLayout>
         <l:BlockLayoutRow>
             <l:BlockLayoutCell
-                title="Natura_NOS"
+                title="Stock_NOS"
                 titleAlignment="Left"
                 class="customCellImageBackground">
                 <VBox>

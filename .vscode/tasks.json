@@ -40,7 +40,7 @@
       }
     },
     {
-      "label": "PreLaunchTask for Run Natura_NOS",
+      "label": "PreLaunchTask for Run Stock_NOS",
       "type": "process",
       "command": "npx",
       "args": [
@@ -56,12 +56,12 @@
     },
     {
       "type": "dpt.ptdeploy",
-      "label": "Deploy Natura_NOS",
+      "label": "Deploy Stock_NOS",
       "taskType": "Deploy"
     },
     {
       "type": "dpt.ptdeploy",
-      "label": "Enable Discovery and Deploy Natura_NOS",
+      "label": "Enable Discovery and Deploy Stock_NOS",
       "taskType": "Deploy",
       "enableDiscovery": "true"
     }

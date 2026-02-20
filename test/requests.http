@@ -1,0 +1,94 @@
+# ─── Variables ────────────────────────────────────────────────────────────────
+@base = http://localhost:4004/service/Stock_NOSService
+
+###
+# ─── 1. Seed master data (bulk) ───────────────────────────────────────────────
+POST {{base}}/loadMasterData
+Content-Type: application/json
+
+{
+  "channels": [
+    { "code": "ECOMMERCE",   "name": "E-Commerce" },
+    { "code": "VAREJO",      "name": "Varejo Fisico" },
+    { "code": "CONSULTORAS", "name": "Rede de Consultoras" }
+  ],
+  "locations": [
+    { "siteId": "CD-SP-01", "name": "Centro de Distribuicao Sao Paulo 01",       "locationType": "CD",      "description": "Cajamar-SP" },
+    { "siteId": "CD-SP-02", "name": "Centro de Distribuicao Sao Paulo 02",       "locationType": "CD",      "description": "Guarulhos-SP" },
+    { "siteId": "CD-RJ-01", "name": "Centro de Distribuicao Rio de Janeiro",     "locationType": "CD",      "description": "Duque de Caxias-RJ" },
+    { "siteId": "CD-MG-01", "name": "Centro de Distribuicao Minas Gerais",       "locationType": "CD",      "description": "Contagem-MG" },
+    { "siteId": "CD-RS-01", "name": "Centro de Distribuicao Rio Grande do Sul",  "locationType": "CD",      "description": "Canoas-RS" },
+    { "siteId": "CD-PR-01", "name": "Centro de Distribuicao Parana",             "locationType": "CD",      "description": "Curitiba-PR" },
+    { "siteId": "HUB-SP",   "name": "Hub Sao Paulo",                            "locationType": "HUB",     "description": "Grande Sao Paulo" },
+    { "siteId": "HUB-RJ",   "name": "Hub Rio de Janeiro",                       "locationType": "HUB",     "description": "Grande Rio de Janeiro" },
+    { "siteId": "FAC-MG",   "name": "Fabrica Minas Gerais",                     "locationType": "FACTORY", "description": "Betim-MG" }
+  ],
+  "products": [
+    { "productName": "Smartphone Ultra 6.1",       "productType": "Eletronicos", "productSAPCode": "PROD-SKU-001", "productDescription": "Smartphone com tela AMOLED 6.1 polegadas" },
+    { "productName": "Tablet Connect 10",           "productType": "Eletronicos", "productSAPCode": "PROD-SKU-002", "productDescription": "Tablet Wi-Fi com tela 10 polegadas" },
+    { "productName": "Notebook Pro 15",             "productType": "Eletronicos", "productSAPCode": "PROD-SKU-003", "productDescription": "Notebook com processador octa-core 15 polegadas" },
+    { "productName": "Fone Bluetooth ANC",          "productType": "Eletronicos", "productSAPCode": "PROD-SKU-004", "productDescription": "Fone Bluetooth com cancelamento ativo de ruido" },
+    { "productName": "Camiseta Dry-Fit M",          "productType": "Vestuario",   "productSAPCode": "PROD-SKU-005", "productDescription": "Camiseta esportiva dry-fit tamanho M" },
+    { "productName": "Calca Jeans Slim 42",         "productType": "Vestuario",   "productSAPCode": "PROD-SKU-006", "productDescription": "Calca jeans corte slim tamanho 42" },
+    { "productName": "Tenis Esportivo 40",          "productType": "Vestuario",   "productSAPCode": "PROD-SKU-007", "productDescription": "Tenis esportivo tamanho 40" },
+    { "productName": "Mochila Trekking 30L",        "productType": "Vestuario",   "productSAPCode": "PROD-SKU-008", "productDescription": "Mochila para trilha 30 litros" },
+    { "productName": "Proteina Whey 1kg",           "productType": "Alimentos",   "productSAPCode": "PROD-SKU-009", "productDescription": "Suplemento proteico soro de leite 1kg" },
+    { "productName": "Barra de Cereal 40g",         "productType": "Alimentos",   "productSAPCode": "PROD-SKU-010", "productDescription": "Barra energetica de cereais 40g" },
+    { "productName": "Azeite Extra Virgem 500ml",   "productType": "Alimentos",   "productSAPCode": "PROD-SKU-011", "productDescription": "Azeite extra virgem 500ml" },
+    { "productName": "Cafe Torrado Fino 500g",      "productType": "Alimentos",   "productSAPCode": "PROD-SKU-012", "productDescription": "Cafe torrado e moido premium 500g" },
+    { "productName": "Shampoo Hidratante 400ml",    "productType": "Higiene",     "productSAPCode": "PROD-SKU-013", "productDescription": "Shampoo hidratante 400ml" },
+    { "productName": "Condicionador Nutritivo 400ml","productType": "Higiene",     "productSAPCode": "PROD-SKU-014", "productDescription": "Condicionador nutritivo para cabelos secos 400ml" },
+    { "productName": "Sabonete Liquido 250ml",      "productType": "Higiene",     "productSAPCode": "PROD-SKU-015", "productDescription": "Sabonete liquido antibacteriano 250ml" },
+    { "productName": "Protetor Solar FPS50 200ml",  "productType": "Higiene",     "productSAPCode": "PROD-SKU-016", "productDescription": "Protetor solar FPS50 toque seco 200ml" },
+    { "productName": "Toalha de Banho Premium",     "productType": "Casa",        "productSAPCode": "PROD-SKU-017", "productDescription": "Toalha de banho 100% algodao 70x140cm" },
+    { "productName": "Jogo de Cama Casal",          "productType": "Casa",        "productSAPCode": "PROD-SKU-018", "productDescription": "Jogo de cama casal 200 fios 4 pecas" },
+    { "productName": "Travesseiro Conforto 50x70",  "productType": "Casa",        "productSAPCode": "PROD-SKU-019", "productDescription": "Travesseiro fibra siliconada 50x70cm" },
+    { "productName": "Cobertor Solteiro Soft",      "productType": "Casa",        "productSAPCode": "PROD-SKU-020", "productDescription": "Cobertor solteiro microfibra toque suave" }
+  ]
+}
+
+###
+# ─── 2. Process inventory event (200 positions) ───────────────────────────────
+POST {{base}}/processInventoryEvent
+Content-Type: application/json
+
+< ./payloads/inventory-event-batch.json
+
+###
+# ─── 3. Process inventory event (1720 positions — all 9 sites × 3 channels) ──
+POST {{base}}/processInventoryEvent
+Content-Type: application/json
+
+< ./payloads/inventory-event-sample.json
+
+###
+# ─── 4. Verify: stock movements ──────────────────────────────────────────────
+GET {{base}}/StockMovement?$top=20&$select=product_ID,location_ID,channel_ID,stockType,quantity,type
+
+###
+# ─── 5. Verify: stock balance per product + location ─────────────────────────
+GET {{base}}/StockBalance?$expand=product($select=productSAPCode),location($select=siteId)
+
+###
+# ─── 6. Verify: inventory events ─────────────────────────────────────────────
+GET {{base}}/InventoryEvent?$orderby=createdAt desc&$top=5
+
+###
+# ─── 7. StockBalanceByChannel — saldo por produto, local e canal de venda ─────
+GET {{base}}/StockBalanceByChannel?$expand=product($select=productSAPCode),location($select=siteId),channel($select=code)&$orderby=product/productSAPCode,location/siteId
+
+###
+# ─── 8. StockBalanceByType — saldo por produto, local e tipo de estoque ───────
+GET {{base}}/StockBalanceByType?$expand=product($select=productSAPCode),location($select=siteId)&$orderby=product/productSAPCode,stockType
+
+###
+# ─── 9. StockInTransit — remessas em trânsito com previsão de chegada ─────────
+GET {{base}}/StockInTransit?$expand=product($select=productSAPCode),location($select=siteId)&$orderby=estimatedArrival asc
+
+###
+# ─── 11. ProductStockSummary — saldo total, em trânsito e bloqueado por produto
+GET {{base}}/ProductStockSummary?$expand=product($select=productName,productSAPCode)&$orderby=totalBalance desc
+
+###
+# ─── 12. InventoryEventSummary — movimentos criados vs declarados por evento ──
+GET {{base}}/InventoryEventSummary?$expand=inventoryEvent($select=eventId,totalRecords,syncType,eventTs)&$orderby=inventoryEvent/eventTs desc

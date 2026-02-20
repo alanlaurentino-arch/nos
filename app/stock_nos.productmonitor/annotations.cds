@@ -1,4 +1,4 @@
-using Natura_NOSService as service from '../../srv/service';
+using Stock_NOSService as service from '../../srv/service';
 annotate service.Product with @(
     UI.FieldGroup #GeneratedGroup : {
         $Type : 'UI.FieldGroupType',

@@ -32,6 +32,7 @@ module.exports = class Stock_NOSService extends cds.ApplicationService {
             log.info(`[${header.eventId}] Received | source: ${header.sourceSystem} | sync: ${header.syncType} | positions: ${positions.length}`);
 
             cds.spawn(async () => {
+                const t0 = Date.now();
                 try {
                     const db = await cds.connect.to('db');
                     const { InventoryEvent, StockMovement, Product, Location, Channel } = cds.entities('Stock_NOS');
@@ -49,11 +50,24 @@ module.exports = class Stock_NOSService extends cds.ApplicationService {
                     );
                     log.info(`[${header.eventId}] InventoryEvent created | id: ${eventId}`);
 
+                    const skus = [...new Set(positions.map(p => p.sku))];
+                    const siteIds = [...new Set(positions.map(p => p.siteId))];
+                    const codes = [...new Set(positions.map(p => p.channel))];
+
+                    const [products, locations, channels] = await Promise.all([
+                        db.run(SELECT.from(Product).where({ productSAPCode: { in: skus } })),
+                        db.run(SELECT.from(Location).where({ siteId: { in: siteIds } })),
+                        db.run(SELECT.from(Channel).where({ code: { in: codes } })),
+                    ]);
+                    const productBySku = new Map(products.map(p => [p.productSAPCode, p]));
+                    const locationBySite = new Map(locations.map(l => [l.siteId, l]));
+                    const channelByCode = new Map(channels.map(c => [c.code, c]));
+
                     const movements = [];
                     for (const pos of positions) {
-                        const [product] = await db.run(SELECT.from(Product).where({ productSAPCode: pos.sku }));
-                        const [location] = await db.run(SELECT.from(Location).where({ siteId: pos.siteId }));
-                        const [channel] = await db.run(SELECT.from(Channel).where({ code: pos.channel }));
+                        const product = productBySku.get(pos.sku);
+                        const location = locationBySite.get(pos.siteId);
+                        const channel = channelByCode.get(pos.channel);
 
                         if (!product || !location || !channel) {
                             log.warn(`[${header.eventId}] Skipped position | sku: ${pos.sku} | siteId: ${pos.siteId} | channel: ${pos.channel} | reason: master data not found`);
@@ -86,7 +100,7 @@ module.exports = class Stock_NOSService extends cds.ApplicationService {
                         eventId: header.eventId,
                         totalCreated: movements.length
                     });
-                    log.info(`[${header.eventId}] Processing complete | created: ${movements.length} of ${positions.length}`);
+                    log.info(`[${header.eventId}] Processing complete | created: ${movements.length} of ${positions.length} | Exec time: ${Date.now() - t0}ms`);
 
                 } catch (err) {
                     log.error(`[${header.eventId}] Processing failed | ${err.message}`, err);

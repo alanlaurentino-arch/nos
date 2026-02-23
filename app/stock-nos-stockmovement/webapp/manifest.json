@@ -1,0 +1,165 @@
+{
+  "_version": "1.82.0",
+  "sap.app": {
+    "id": "stocknosstockmovement",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:lrop",
+      "version": "1.20.3",
+      "toolsId": "e70aeb4a-08e0-4805-9ecd-9648ea7653db"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/service/Stock_NOSService/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "4.0"
+        }
+      }
+    },
+    "crossNavigation": {
+      "inbounds": {
+        "stocknosstockmovement-display": {
+          "semanticObject": "stocknosstockmovement",
+          "action": "display",
+          "title": "{{stocknosstockmovement-display.flpTitle}}",
+          "signature": {
+            "parameters": {},
+            "additionalParameters": "allowed"
+          }
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.145.0",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.fe.templates": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "stocknosstockmovement.i18n.i18n",
+          "supportedLocales": ["", "en", "pt_BR"],
+          "fallbackLocale": "en"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {
+          "operationMode": "Server",
+          "autoExpandSelect": true,
+          "earlyRequests": true
+        }
+      },
+      "@i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "stocknosstockmovement.i18n.i18n",
+          "supportedLocales": ["", "en", "pt_BR"],
+          "fallbackLocale": "en"
+        }
+      }
+    },
+    "resources": {
+      "css": []
+    },
+    "routing": {
+      "config": {},
+      "routes": [
+        {
+          "pattern": ":?query:",
+          "name": "StockMovementList",
+          "target": "StockMovementList"
+        },
+        {
+          "pattern": "StockMovement({key}):?query:",
+          "name": "StockMovementObjectPage",
+          "target": "StockMovementObjectPage"
+        }
+      ],
+      "targets": {
+        "StockMovementList": {
+          "type": "Component",
+          "id": "StockMovementList",
+          "name": "sap.fe.templates.ListReport",
+          "options": {
+            "settings": {
+              "contextPath": "/StockMovement",
+              "variantManagement": "Page",
+              "navigation": {
+                "StockMovement": {
+                  "detail": {
+                    "route": "StockMovementObjectPage"
+                  }
+                }
+              },
+              "controlConfiguration": {
+                "@com.sap.vocabularies.UI.v1.LineItem": {
+                  "tableSettings": {
+                    "type": "ResponsiveTable"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "StockMovementObjectPage": {
+          "type": "Component",
+          "id": "StockMovementObjectPage",
+          "name": "sap.fe.templates.ObjectPage",
+          "options": {
+            "settings": {
+              "editableHeaderContent": false,
+              "contextPath": "/StockMovement"
+            }
+          }
+        }
+      }
+    }
+  },
+  "sap.fiori": {
+    "registrationIds": [],
+    "archeType": "transactional"
+  },
+  "sap.fe": {
+    "app": {
+      "enableLazyLoading": true
+    }
+  }
+}

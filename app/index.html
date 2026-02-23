@@ -27,8 +27,72 @@
                     return Controller.extend("PreviewController", {
                         onInit: function () {
 
-                            const data = {"Services":[{"ServiceName":"Stock_NOSService","DetailsURL":"./service/Stock_NOSService/","Metadata":"./service/Stock_NOSService/$metadata","Entities":[{"Name":"Product","URL":"./service/Stock_NOSService/Product","FioriURL":"$fiori-preview/Stock_NOSService/Product#preview-app"},{"Name":"Location","URL":"./service/Stock_NOSService/Location","FioriURL":""},{"Name":"Channel","URL":"./service/Stock_NOSService/Channel","FioriURL":""},{"Name":"InventoryEvent","URL":"./service/Stock_NOSService/InventoryEvent","FioriURL":""},{"Name":"Requester","URL":"./service/Stock_NOSService/Requester","FioriURL":""},{"Name":"Order","URL":"./service/Stock_NOSService/Order","FioriURL":""},{"Name":"OrderStatus","URL":"./service/Stock_NOSService/OrderStatus","FioriURL":""},{"Name":"StockMovement","URL":"./service/Stock_NOSService/StockMovement","FioriURL":""},{"Name":"StockBalance","URL":"./service/Stock_NOSService/StockBalance","FioriURL":""},{"Name":"StockBalanceByChannel","URL":"./service/Stock_NOSService/StockBalanceByChannel","FioriURL":""},{"Name":"StockBalanceByType","URL":"./service/Stock_NOSService/StockBalanceByType","FioriURL":""},{"Name":"StockInTransit","URL":"./service/Stock_NOSService/StockInTransit","FioriURL":""},{"Name":"ProductStockSummary","URL":"./service/Stock_NOSService/ProductStockSummary","FioriURL":"$fiori-preview/Stock_NOSService/ProductStockSummary#preview-app"},{"Name":"InventoryEventSummary","URL":"./service/Stock_NOSService/InventoryEventSummary","FioriURL":""}],"EntitiesCount":14}]}
-                            this.getView().setModel(new JSONModel(data));
+const data = {
+    "Services": [{
+        "ServiceName": "Stock_NOSService",
+        "DetailsURL": "./service/Stock_NOSService/",
+        "Metadata": "./service/Stock_NOSService/$metadata",
+        "Entities": [{
+            "Name": "Product",
+            "URL": "./service/Stock_NOSService/Product",
+            "FioriURL": "$fiori-preview/Stock_NOSService/Product#preview-app"
+        }, {
+            "Name": "Location",
+            "URL": "./service/Stock_NOSService/Location",
+            "FioriURL": ""
+        }, {
+            "Name": "Channel",
+            "URL": "./service/Stock_NOSService/Channel",
+            "FioriURL": ""
+        }, {
+            "Name": "InventoryEvent",
+            "URL": "./service/Stock_NOSService/InventoryEvent",
+            "FioriURL": ""
+        }, {
+            "Name": "Requester",
+            "URL": "./service/Stock_NOSService/Requester",
+            "FioriURL": ""
+        }, {
+            "Name": "Order",
+            "URL": "./service/Stock_NOSService/Order",
+            "FioriURL": ""
+        }, {
+            "Name": "OrderStatus",
+            "URL": "./service/Stock_NOSService/OrderStatus",
+            "FioriURL": ""
+        }, {
+            "Name": "StockMovement",
+            "URL": "./service/Stock_NOSService/StockMovement",
+            "FioriURL": "$fiori-preview/Stock_NOSService/StockMovement#preview-app"
+        }, {
+            "Name": "StockBalance",
+            "URL": "./service/Stock_NOSService/StockBalance",
+            "FioriURL": ""
+        }, {
+            "Name": "StockBalanceByChannel",
+            "URL": "./service/Stock_NOSService/StockBalanceByChannel",
+            "FioriURL": ""
+        }, {
+            "Name": "StockBalanceByType",
+            "URL": "./service/Stock_NOSService/StockBalanceByType",
+            "FioriURL": ""
+        }, {
+            "Name": "StockInTransit",
+            "URL": "./service/Stock_NOSService/StockInTransit",
+            "FioriURL": ""
+        }, {
+            "Name": "ProductStockSummary",
+            "URL": "./service/Stock_NOSService/ProductStockSummary",
+            "FioriURL": "$fiori-preview/Stock_NOSService/ProductStockSummary#preview-app"
+        }, {
+            "Name": "InventoryEventSummary",
+            "URL": "./service/Stock_NOSService/InventoryEventSummary",
+            "FioriURL": ""
+        }],
+        "EntitiesCount": 14
+    }]
+}
+this.getView().setModel(new JSONModel(data));
                         }
                     });
                 });

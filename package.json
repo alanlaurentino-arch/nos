@@ -26,7 +26,8 @@
     "generate-entry-point": "dev-cap-tools gen-entrypoint",
     "cds-watch": "cds watch --open",
     "watch-stock_nos.productmonitor": "cds watch --open stocknos.productmonitor/index.html?sap-ui-xx-viewCache=false --livereload false",
-    "watch-stock-nos-stockviews": "cds watch --open stocknosstockviews/index.html?sap-ui-xx-viewCache=false --livereload false"
+    "watch-stock-nos-stockviews": "cds watch --open stocknosstockviews/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-stock-nos-stockmovement": "cds watch --open stocknosstockmovement/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {
@@ -58,7 +59,8 @@
   "lcap": true,
   "sapux": [
     "app/stock_nos.productmonitor",
-    "app/stock-nos-stockviews"
+    "app/stock-nos-stockviews",
+    "app/stock-nos-stockmovement"
   ],
   "workspaces": [
     "app/*"

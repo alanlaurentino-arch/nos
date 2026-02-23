@@ -62,7 +62,8 @@ service Stock_NOSService {
     @odata.draft.enabled
     entity Order                 as projection on my.Order;
 
-    @odata.draft.enabled
+ //   @odata.draft.enabled
+    @readonly
     entity StockMovement         as projection on my.StockMovement;
 
     @readonly

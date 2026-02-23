@@ -1,7 +1,7 @@
 {
-  "_version": "1.60.0",
+  "_version": "1.73.1",
   "sap.app": {
-    "id": "stocknos.productmonitor",
+    "id": "stocknosstockviews",
     "type": "application",
     "i18n": "i18n/i18n.properties",
     "applicationVersion": {
@@ -12,8 +12,8 @@
     "resources": "resources.json",
     "sourceTemplate": {
       "id": "@sap/generator-fiori:lrop",
-      "version": "1.20.2",
-      "toolsId": "f9a0dca2-3a73-42bd-b7f0-ff2ca177ad3e"
+      "version": "1.20.3",
+      "toolsId": "39575f9f-c254-47bb-9e25-bfe6f0c9037b"
     },
     "dataSources": {
       "mainService": {
@@ -27,10 +27,10 @@
     },
     "crossNavigation": {
       "inbounds": {
-        "stocknosproductmonitor-display": {
-          "semanticObject": "stocknosproductmonitor",
+        "stocknosstockviews-display": {
+          "semanticObject": "stocknosstockviews",
           "action": "display",
-          "title": "{{stocknosproductmonitor-display.flpTitle}}",
+          "title": "{{stocknosstockviews-display.flpTitle}}",
           "signature": {
             "parameters": {},
             "additionalParameters": "allowed"
@@ -58,7 +58,7 @@
   "sap.ui5": {
     "flexEnabled": true,
     "dependencies": {
-      "minUI5Version": "1.120.13",
+      "minUI5Version": "1.136.7",
       "libs": {
         "sap.m": {},
         "sap.ui.core": {},
@@ -73,7 +73,7 @@
       "i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "stocknos.productmonitor.i18n.i18n",
+          "bundleName": "stocknosstockviews.i18n.i18n",
           "supportedLocales": ["", "en", "pt_BR"],
           "fallbackLocale": "en"
         }
@@ -90,7 +90,7 @@
       "@i18n": {
         "type": "sap.ui.model.resource.ResourceModel",
         "settings": {
-          "bundleName": "stocknos.productmonitor.i18n.i18n",
+          "bundleName": "stocknosstockviews.i18n.i18n",
           "supportedLocales": ["", "en", "pt_BR"],
           "fallbackLocale": "en"
         }
@@ -104,28 +104,28 @@
       "routes": [
         {
           "pattern": ":?query:",
-          "name": "ProductList",
-          "target": "ProductList"
+          "name": "ProductStockSummaryList",
+          "target": "ProductStockSummaryList"
         },
         {
-          "pattern": "Product({key}):?query:",
-          "name": "ProductObjectPage",
-          "target": "ProductObjectPage"
+          "pattern": "ProductStockSummary({key}):?query:",
+          "name": "ProductStockSummaryObjectPage",
+          "target": "ProductStockSummaryObjectPage"
         }
       ],
       "targets": {
-        "ProductList": {
+        "ProductStockSummaryList": {
           "type": "Component",
-          "id": "ProductList",
+          "id": "ProductStockSummaryList",
           "name": "sap.fe.templates.ListReport",
           "options": {
             "settings": {
-              "contextPath": "/Product",
+              "contextPath": "/ProductStockSummary",
               "variantManagement": "Page",
               "navigation": {
-                "Product": {
+                "ProductStockSummary": {
                   "detail": {
-                    "route": "ProductObjectPage"
+                    "route": "ProductStockSummaryObjectPage"
                   }
                 }
               },
@@ -139,14 +139,14 @@
             }
           }
         },
-        "ProductObjectPage": {
+        "ProductStockSummaryObjectPage": {
           "type": "Component",
-          "id": "ProductObjectPage",
+          "id": "ProductStockSummaryObjectPage",
           "name": "sap.fe.templates.ObjectPage",
           "options": {
             "settings": {
               "editableHeaderContent": false,
-              "contextPath": "/Product"
+              "contextPath": "/ProductStockSummary"
             }
           }
         }

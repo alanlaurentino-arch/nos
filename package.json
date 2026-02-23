@@ -6,6 +6,7 @@
     "@cap-js/hana": "^2",
     "@sap-cloud-sdk/http-client": "^4.4.0",
     "@sap-cloud-sdk/util": "^4.4.0",
+    "@sap-ux/fiori-mcp-server": "^0.6.32",
     "@sap/cds": "^9",
     "@sap/low-code-event-handler": "^1.2.5",
     "@sap/xsenv": ">=3.3.2 <3.3.3",
@@ -16,17 +17,24 @@
   },
   "devDependencies": {
     "@cap-js/sqlite": "^2",
-    "@sap/dev-cap-tools": "^1.31.0"
+    "@sap/dev-cap-tools": "^1.31.0",
+    "cds-plugin-ui5": "^0.13.0"
   },
   "scripts": {
     "start": "cds-serve",
     "start-local": "npm run generate-entry-point && npm run cds-watch",
     "generate-entry-point": "dev-cap-tools gen-entrypoint",
     "cds-watch": "cds watch --open",
-    "watch-stock_nos.productmonitor": "cds watch --open stock_nos.productmonitor/webapp/index.html?sap-ui-xx-viewCache=false"
+    "watch-stock_nos.productmonitor": "cds watch --open stocknos.productmonitor/index.html?sap-ui-xx-viewCache=false --livereload false",
+    "watch-stock-nos-stockviews": "cds watch --open stocknosstockviews/index.html?sap-ui-xx-viewCache=false --livereload false"
   },
   "private": true,
   "cds": {
+    "i18n": {
+      "preserved_locales": [
+        "pt_BR"
+      ]
+    },
     "server": {
       "bodyParser": {
         "limit": "5mb"
@@ -49,6 +57,10 @@
   },
   "lcap": true,
   "sapux": [
-    "app/stock_nos.productmonitor"
+    "app/stock_nos.productmonitor",
+    "app/stock-nos-stockviews"
+  ],
+  "workspaces": [
+    "app/*"
   ]
 }
